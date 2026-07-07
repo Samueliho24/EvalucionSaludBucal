@@ -13,7 +13,7 @@
 	<option value=1>1 - Chasquido</option>
 	<option value=2>2 - Contractura maseteriana</option>
 	<option value=3>3 - Reducción de la apertura &lt; 30 mm</option>
-	<option value=4>4 - Reducción moviemiento de lateralidad y protusión</option>
+	<option value=4>4 - Reducción movimiento de lateralidad y protrusión</option>
 {% endmacro %}
 
 {% macro temporomaxilar_option(name, macro) %}
@@ -134,12 +134,12 @@
 	<select name="{{name}}" required >
 		<option value=0>0 - Ausencia</option>
 		<option value=1>1 - Hasta 1/3</option>
-		<option value=2>2 - Mas de 1/3 Hasta 2/3</option>
-		<option value=3>3 - Mas de 2/3</option>
+		<option value=2>2 - Más de 1/3 Hasta 2/3</option>
+		<option value=3>3 - Más de 2/3</option>
 	</select>
 {% endmacro %}
 
-{% macro peridontico(name) %}
+{% macro periodontico(name) %}
 <select name="{{name}}" required >
 	<option value="0">0 - Sano</option>
 	<option value="1">1 - Hemorragia</option>
@@ -157,7 +157,7 @@
 	<option value="1">1 - 4.5mm (Unión Cemento-Esmalte (UCE) dentro de la banda negra)</option>
 	<option value="2">2 - 6.8mm (UCE entre límite superior de la banda negra y el anillo de 8.5mm)</option>
 	<option value="3">3 - 9.11mm (UCE entre anillos de 8.5mm y 11.5mm)</option>
-	<option value="4">4 - 12mm o más alla (UCE + allá del anillo de 11.5mm)</option>
+	<option value="4">4 - 12mm o más allá (UCE + allá del anillo de 11.5mm)</option>
 	<option value="X">X - Sextante excluido</option>
 </select>
 {% endmacro %}
@@ -174,8 +174,8 @@
 		<option value=4>4 - Perdido por caries</option>
 		<option value=E>E - Perdido por caries (Primario)</option>
 		<option value=5>5 - Perdido por otro motivo</option>
-		<option value=6>6 - Fisura oburtada</option>
-		<option value=F>F - Fisura oburtada (Primario)</option>
+		<option value=6>6 - Fisura obturada</option>
+		<option value=F>F - Fisura obturada (Primario)</option>
 		<option value=7>7 - Soporte de puente, corona, implantes</option>
 		<option value=G>G - Soporte de puente, corona, implantes (Primario)</option>
 		<option value=8>8 - Diente sin brotar</option>
@@ -329,7 +329,7 @@
 			<input name=apellido  required />
 		</div>
 		<div>
-			<label for=genero>Genero</label>
+			<label for=genero>Género</label>
 			<select name=genero required >
 				<option value="1">1 - Masculino</option>
 				<option value="2">2 - Femenino</option>
@@ -547,7 +547,7 @@
 	<span class=note>(A partir de los 12 años de edad)</span>
 	<div id=temporomaxilar class=options>
 		<div>
-			<label for="temporomaxilar_sintoma">Sintomas</label>
+			<label for="temporomaxilar_sintoma">Síntomas</label>
 			<select name="temporomaxilar_sintoma" required >
 				{{ temporomaxilar_sintomas() }}
 			</select>
@@ -592,7 +592,7 @@
 			}
 		</script>
 		<div>
-		<label>Hay Lesion</label>
+		<label>Hay Lesión</label>
 			<select name=lesion onchange="disable_lesion(event)" required >
 				<option value=0>0 - Si</option>
 				<option value=1 selected=true>1 - No</option>
@@ -603,13 +603,13 @@
 		{{ select("Color", "lesion_color", intraoral_color) }}
 		{{ select("Tamaño", "lesion_tamaño", intraoral_tamaño) }}
 		{{ select("Consistencia", "lesion_consistencia", intraoral_consistencia) }}
-		{{ select("Morfologia", "lesion_morfologia", intraoral_morfologia) }}
+		{{ select("Morfología", "lesion_morfologia", intraoral_morfologia) }}
 		<div>
-			<label for=lesion_numero>Numero de Lesiones</label>
+			<label for=lesion_numero>Número de Lesiones</label>
 			<select name=lesion_numero required >
-				<option value=0>0 - Unica</option>
-				<option value=1>1 - Multiples lesiones con iguales caracteristicas</option>
-				<option value=2>2 - Multiples lesiones con diferentes caracteristicas</option>
+				<option value=0>0 - Única</option>
+				<option value=1>1 - Múltiples lesiones con iguales características</option>
+				<option value=2>2 - Múltiples lesiones con diferentes características</option>
 			</select>
 		</div>
 		<script>
@@ -620,9 +620,9 @@
 	</div>
 	
 	<div class=separator style=background-color:black></div>
-	<h2>Flurosis Dental</h2>
+	<h2>Fluorosis Dental</h2>
 	<span class=note>(A partir de los 6 años de edad)</span>
-	<select name=flurosis required >
+	<select name=fluorosis required >
 		<option value=0>0 - Normal</option>
 		<option value=1>1 - Dudosa</option>
 		<option value=2>2 - Muy leve</option>
@@ -679,9 +679,10 @@
 			{% endfor %}
 		</thead>
 		<tbody>
+		{% set labels = {"placa": "Placa", "calculo": "Cálculo"} %}
 		{% for d in ["placa", "calculo"] %}
 			<tr>
-				<th>{{ d|capitalize }}</th>
+				<th>{{ labels[d] }}</th>
 				{% for h in higienes %}
 					<th>{{ higiene_select(d + "_" + h) }}</th>
 				{% endfor %}
@@ -691,9 +692,9 @@
 	</table>
 
 	<div class=separator style=background-color:black></div>
-	<h2>Indice Periodontal de la Comunidad (IPC)</h2>
+	<h2>Índice Periodontal de la Comunidad (IPC)</h2>
 	<span class=note>(A partir de los 15 años de edad, aplican opciones 3 y 4)</span>
-	{{ tabla_dientes_3_2("peridontico", peridontico, [54, 56, 57, 59]) }}
+	{{ tabla_dientes_3_2("periodontico", periodontico, [54, 56, 57, 59]) }}
 	
 	<div class=separator style=background-color:black></div>
 	<h2>Estado de la Dentición y Tratamiento Necesario</h2>
@@ -758,7 +759,7 @@
 
 	<div class=separator style=background-color:black></div>
 	<!--TODO: JS for disable when ninguno-->
-	<h2>Habitos</h2>
+	<h2>Hábitos</h2>
 	<span class=note>(Hasta los 18 años)</span>
 	<div class=options id="habitos">
 {#
@@ -792,7 +793,7 @@
 			</select>
 		</div>
 		<div>
-			<label for=habitos_deglucion_atipica>Deglución Atipica</label>
+			<label for=habitos_deglucion_atipica>Deglución Atípica</label>
 			<select name=habitos_deglucion_atipica  required >
 				{{ presenta() }}
 			</select>
@@ -848,7 +849,7 @@
 			</select>
 		</div>
 
-		{% for x in ["diastema", "mordida_abierta", "morida_profunda_anterior", "morida_tope_a_tope"] %}
+		{% for x in ["diastema", "mordida_abierta", "mordida_profunda_anterior", "mordida_tope_a_tope"] %}
 			<div>
 				<label for="{{x}}">{{ x.replace("_", " ")|capitalize }}</label>
 				<select name="{{x}}" required >
@@ -891,7 +892,7 @@
 		{query: "#lesion select", min: 5},
 		{query: "#temporomaxilar select", min: 12},
 		// {query: 'table[id="higiene"] select', min: 5},
-		{query: 'table[id="peridontico"] select', min: 15, action: (x, val) => {
+		{query: 'table[id="periodontico"] select', min: 15, action: (x, val) => {
 			for (let o of x.querySelectorAll('option:is([value="3"], [value="4"])')) {
 				if (!val)
 					o.setAttribute("hidden", "true");
@@ -905,7 +906,7 @@
 		{query: '[name^="protesis_"]', min: 15},
 		{query: '[name="relacion_oclusion_1ros_molares"]', min: 5},
 		{query: '[name="relacion_oclusion_2dos_molares"]', max: 8},
-		{query: '[name="intraoral_flurosis"]', min: 6},
+		{query: '[name="fluorosis"]', min: 6},
 		{query: '#habitos :is(select, input)', max: 18}
 	]
 	for (let range of age_ranges)
