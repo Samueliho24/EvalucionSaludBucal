@@ -6,6 +6,8 @@
 	/*--bg: #FFFFFF;*/
 	--bg2: #00589e;
 	--fg: #003c6b;
+	--card-max: min(420px, 90vw);
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
 }
 * {
 	gap: inherit;
@@ -18,10 +20,14 @@
 }
 html, body { padding: 0; margin: 0; width: 100%; height: 100%; }
 html {
+	font-size: 16px;
 	gap: var(--pad);
 	align-items: center;
 	background-color: var(--bg);
 	color: var(--fg);
+}
+@media (min-width: 768px) {
+	html { font-size: 18px; }
 }
 form {
 	display: flex;
@@ -81,41 +87,211 @@ th { font-weight: normal }
 .separator { flex-basis: 1px; flex-shrink: 0; align-self: stretch }
 
 #login {
-	padding: 0;
+	padding: var(--bigpad);
 	display: flex;
-	flex-wrap: nowrap;
-	gap: var(--pad);
+	gap: var(--bigpad);
 	flex-direction: column;
+	justify-content: center;
 	background-color: var(--bg2);
 	color: var(--bg);
-	> * { flex-grow: 1; flex-basis: 0px }
-	> div { width: 100%; background-color: white; }
-	> form {
-		> div {
-			display: flex;
-			flex-direction: column;
-			input { padding: var(--smallpad); }
-		}
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
-	}
 }
+#login > #logo {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	padding: var(--pad);
+	width: 100%;
+	max-width: var(--card-max);
+	background-color: white;
+	border-radius: 10px;
+}
+#login > #logo > * {
+	max-width: 100%;
+	height: auto;
+	max-height: 120px;
+}
+#login > form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	padding: var(--bigpad);
+	width: 100%;
+	max-width: var(--card-max);
+	background-color: white;
+	color: var(--fg);
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+#login > form h1 {
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+	font-size: 1.5rem;
+	width: 100%;
+	border: none;
+	padding: 0;
+	margin: 0;
+	color: var(--fg);
+}
+#login > form > div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	width: 100%;
+}
+#login > form input {
+	padding: var(--pad);
+	font-size: 1rem;
+	width: 100%;
+}
+#login > form input[type="submit"] {
+	text-align: center;
+	background-color: var(--bg2);
+	color: white;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: var(--pad);
+	border-radius: 5px;
+	width:90%;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+}
+#login > form a {
+	text-align: center;
+	width: 85%;
+	padding: var(--smallpad);
+	background-color: #e0e0e0;
+	color: #555;
+	border-radius: 5px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+	font-size: 0.9rem;
+}
+
+#login > footer {
+	font-size: 0.9rem;
+	text-align: center;
+	opacity: 0.7;
+}
+
 #welcome {
+	display: flex;
+	flex-direction: column;
+	padding: var(--bigpad); 
+	align-items: center;
+	justify-content: center;
+}
+#welcome h1 {
+	font-size: 1.5rem;
+	border: none;
+	padding: 0;
+	margin: 0 0 5px 0;
+	text-align: center;
+}
+#welcome h2 {
+	font-size: 1.2rem;
+	text-align: center;
+	margin: 0;
+}
+#welcome h2[content=name] {
+	opacity: 0.7;
+	margin-bottom: 2px;
+}
+#welcome h2:last-of-type {
+	font-size: 1rem;
+	font-weight: normal;
+	opacity: 0.55;
+	margin-bottom: 35px;
+}
+#welcome > div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	width: 100%;
+	max-width: var(--card-max);
+}
+#welcome a, #welcome button {
+	text-align: center;
+	font-size: 1.2rem;
+	padding: var(--pad); 
+	border-radius: 10px;
+	width: 100%;
+	min-height: 56px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+}
+#welcome a:last-child, #welcome button:last-child {
+	background-color: #e0e0e0;
+	color: #555;
+}
+#welcome p {
+	font-size: 1rem;
+	text-align: center;
+	opacity: 0.8;
+	margin-top: 5px;
+}
+
+#config {
+	padding: var(--bigpad);
 	display: flex;
 	flex-wrap: nowrap;
 	gap: var(--pad);
 	flex-direction: column;
-	padding: var(--pad);
 	align-items: center;
-	> div { display: flex; flex-direction: column; gap: var(--smallpad); }
+	justify-content: center;
+	background-color: var(--bg2);
+	color: var(--bg);
 }
-#logo {
+#config > form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
+	gap: var(--pad);
+	padding: var(--bigpad);
+	width: 100%;
+	max-width: var(--card-max);
+	background-color: white;
+	color: var(--fg);
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+#config > form h1 {
+	border: none;
+	padding: 0;
+	color: var(--fg);
+}
+#config > form > div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	width: 100%;
+}
+#config > form input {
 	padding: var(--pad);
-	> * { max-width: 100%; height: 0; flex-grow: 1; }
+	font-size: 1rem;
+	width: 100%;
+}
+#config > form input[type="submit"] {
+	background-color: var(--bg2);
+	color: white;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: var(--pad);
+	border-radius: 5px;
+	cursor: pointer;
+}
+#config > form a {
+	text-align: center;
+	width: 100%;
+	padding: var(--smallpad);
+	background-color: #e0e0e0;
+	color: #555;
+	border-radius: 5px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+	font-size: 0.9rem;
+}
+#config footer {
+	text-align: center;
+	font-size: 0.8rem;
+	opacity: 0.6;
+	color: var(--bg);
 }
