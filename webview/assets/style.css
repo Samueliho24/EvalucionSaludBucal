@@ -1,13 +1,25 @@
 :root {
-	--smallpad: 10px;
-	--pad: 15px;
-	--bigpad: 30px;
+	--smallpad: clamp(10px, 1.5vw, 20px);
+	--pad: clamp(16px, 2.5vw, 34px);
+	--bigpad: clamp(28px, 5vw, 64px);
 	--bg: #e5f5ff;
 	/*--bg: #FFFFFF;*/
-	--bg2: #00589e;
+	--bg2: #006699;
+	--accent: #660099;
 	--fg: #003c6b;
-	--card-max: min(420px, 90vw);
+	--card-max: min(90vw, 420px);
 	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+}
+@media (min-width: 480px) {
+	:root { --card-max: min(85vw, 480px); }
+}
+@media (min-width: 768px) {
+	:root {
+		--card-max: min(85vw, 640px);
+	}
+}
+@media (min-width: 1024px) {
+	:root { --card-max: min(65vw, 560px); }
 }
 * {
 	gap: inherit;
@@ -20,14 +32,11 @@
 }
 html, body { padding: 0; margin: 0; width: 100%; height: 100%; }
 html {
-	font-size: 16px;
+	font-size: clamp(16px, 2.5vw, 28px);
 	gap: var(--pad);
 	align-items: center;
 	background-color: var(--bg);
 	color: var(--fg);
-}
-@media (min-width: 768px) {
-	html { font-size: 18px; }
 }
 form {
 	display: flex;
@@ -108,7 +117,7 @@ th { font-weight: normal }
 #login > #logo > * {
 	max-width: 100%;
 	height: auto;
-	max-height: 120px;
+	max-height: clamp(80px, 15vw, 180px);
 }
 #login > form {
 	display: flex;
@@ -173,63 +182,173 @@ th { font-weight: normal }
 #welcome {
 	display: flex;
 	flex-direction: column;
-	padding: var(--bigpad); 
 	align-items: center;
 	justify-content: center;
+	padding: var(--bigpad);
+	background-color: var(--bg2);
+	min-height: 100%;
+	box-sizing: border-box;
 }
-#welcome h1 {
+#welcome-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--pad);
+	padding: var(--bigpad);
+	width: 100%;
+	max-width: var(--card-max);
+	background-color: white;
+	color: var(--fg);
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+}
+#welcome-card .logo-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--smallpad);
+	align-self: flex-start;
+}
+#welcome-card .logo-row img {
+	height: clamp(30px, 4.5vw, 56px);
+	opacity: 0.9;
+}
+#welcome-card h1 {
 	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--fg);
 	border: none;
 	padding: 0;
-	margin: 0 0 5px 0;
+	margin: 0;
 	text-align: center;
+	width: 100%;
 }
-#welcome h2 {
-	font-size: 1.2rem;
+#welcome-card .user-name {
+	font-size: 1.1rem;
+	color: #555;
 	text-align: center;
 	margin: 0;
+	width: 100%;
 }
-#welcome h2[content=name] {
-	opacity: 0.7;
-	margin-bottom: 2px;
+#welcome-card .system-name {
+	font-size: 0.85rem;
+	color: #999;
+	text-align: center;
+	margin: 0 0 var(--pad) 0;
+	width: 100%;
 }
-#welcome h2:last-of-type {
-	font-size: 1rem;
-	font-weight: normal;
-	opacity: 0.55;
-	margin-bottom: 35px;
-}
-#welcome > div {
+#welcome-card .action-group {
 	display: flex;
 	flex-direction: column;
 	gap: var(--pad);
 	width: 100%;
-	max-width: var(--card-max);
 }
-#welcome a, #welcome button {
-	text-align: center;
-	font-size: 1.2rem;
-	padding: var(--pad); 
-	border-radius: 10px;
-	width: 100%;
-	min-height: 56px;
-	font-weight: bold;
+#welcome-card .btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 1rem;
 	box-sizing: border-box;
 }
-#welcome a:last-child, #welcome button:last-child {
+#welcome-card .btn-primary {
+	background-color: var(--bg2);
+	color: white;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: clamp(16px, 2.8vw, 36px) var(--pad);
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+}
+#welcome-card .btn-secondary {
+	border: 2px solid var(--bg2);
+	background-color: white;
+	color: var(--bg2);
+	font-weight: bold;
+	font-size: 1.05rem;
+	padding: var(--pad);
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+#welcome-card .btn-emergency {
+	border: 2px dashed #d4880f;
+	background-color: #fff8e6;
+	color: #d4880f;
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding: clamp(12px, 1.8vw, 24px) var(--pad);
+}
+#welcome-card .btn-info {
+	border: 2px solid var(--accent);
+	background-color: white;
+	color: var(--accent);
+	font-weight: 600;
+	font-size: 1rem;
+	padding: var(--pad);
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+#welcome-card .btn-tertiary {
 	background-color: #e0e0e0;
 	color: #555;
+	font-weight: normal;
+	font-size: 0.95rem;
+	padding: var(--smallpad) var(--pad);
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 }
-#welcome p {
-	font-size: 1rem;
+#welcome-card .record-count {
+	font-size: 0.85rem;
+	color: #999;
 	text-align: center;
-	opacity: 0.8;
-	margin-top: 5px;
+	margin: 0;
+}
+#welcome-card hr.divider {
+	border: none;
+	border-top: 1px solid #ddd;
+	width: 100%;
+	margin: var(--pad) 0 var(--smallpad) 0;
+}
+#welcome-card .card-footer {
+	font-size: 0.7rem;
+	color: #aaa;
+	text-align: center;
+	padding-top: clamp(4px, 0.8vw, 12px);
+	width: 100%;
+}
+@media (min-width: 768px) {
+	#welcome {
+		justify-content: flex-start;
+		padding-top: 6vh;
+	}
+	#login {
+		justify-content: flex-start;
+		padding-top: 6vh;
+	}
+	#config {
+		justify-content: flex-start;
+		padding-top: 8vh;
+	}
+	#info {
+		justify-content: flex-start;
+		padding-top: 8vh;
+	}
 }
 
+#config-logo {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad);
+	padding: var(--pad);
+	width: 100%;
+	max-width: var(--card-max);
+	background-color: white;
+	border-radius: 10px;
+}
+#config-logo > * {
+	max-width: 100%;
+	height: auto;
+	max-height: clamp(80px, 15vw, 180px);
+}
 #config {
 	padding: var(--bigpad);
 	display: flex;
@@ -255,8 +374,12 @@ th { font-weight: normal }
 	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
 #config > form h1 {
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+	font-size: 1.5rem;
+	font-weight: bold;
 	border: none;
 	padding: 0;
+	margin: 0;
 	color: var(--fg);
 }
 #config > form > div {
@@ -271,23 +394,32 @@ th { font-weight: normal }
 	width: 100%;
 }
 #config > form input[type="submit"] {
+	text-align: center;
 	background-color: var(--bg2);
 	color: white;
 	font-weight: bold;
 	font-size: 1.1rem;
 	padding: var(--pad);
 	border-radius: 5px;
+	width: 90%;
 	cursor: pointer;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
 }
 #config > form a {
 	text-align: center;
 	width: 100%;
-	padding: var(--smallpad);
+	padding: var(--pad);
 	background-color: #e0e0e0;
 	color: #555;
 	border-radius: 5px;
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 	font-size: 0.9rem;
+}
+#config > form a.btn-info {
+	border: 2px solid var(--accent);
+	background-color: white;
+	color: var(--accent);
+	font-weight: 600;
 }
 #config footer {
 	text-align: center;

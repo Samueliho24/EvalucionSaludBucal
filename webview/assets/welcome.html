@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css"/>
 </head>
 <body id=welcome>
-	<h1 style=align-self:stretch;text-align:center>Bienvenido</h1>
-	<h2 content=name></h2>
-	<h2>Sistema de Evaluación de Salud Bucal</h2>
-	
-	<div>
-		<a href="form.html">Formulario</a>
-		<button onclick="Android.export()">Exportar Datos</button>
-		<a href="login.html">Cerrar Sesión</a>
+	<div id=welcome-card>
+		<div class=logo-row>
+			<img src="escudo_de_luz.png" />
+			<img src="LOGO ODONTOLOGIA.png" />
+		</div>
+
+		<h1>Bienvenido</h1>
+		<p class=user-name content=name></p>
+		<p class=system-name>Sistema de Evaluaci&oacute;n de Salud Bucal</p>
+
+		<div class=action-group>
+			<a href="form.html" class="btn btn-primary">Formulario</a>
+			<button onclick="Android.export()" class="btn btn-secondary">Exportar Datos</button>
+			<p class=record-count>Registros por Exportar: <span content=count></span></p>
+		</div>
+
+		<a href="#" class="btn btn-emergency" style="display:none">Extracci&oacute;n Local</a>
+
+		<a href="info.html" class="btn btn-info">Acerca de</a>
+
+		<hr class=divider>
+
+		<a href="login.html" class="btn btn-tertiary">Cerrar Sesi&oacute;n</a>
+
+		<div class=card-footer>&copy; 2026 Departamento de Tecnolog&iacute;a, Informaci&oacute;n y Comunicaci&oacute;n</div>
 	</div>
-	<p>Tiene <span content=count></span> Registros por Exportar</p>
-	<script>[...document.querySelectorAll("[content]")].forEach(x => x.textContent = Android.getvar(x.getAttribute("content")))</script>
+	<script>
+		[...document.querySelectorAll("[content]")].forEach(x => x.textContent = Android.getvar(x.getAttribute("content")));
+		if (Android.getvar("cedula") === "1")
+			document.querySelector(".btn-emergency").style.display = "flex";
+	</script>
 </body>
