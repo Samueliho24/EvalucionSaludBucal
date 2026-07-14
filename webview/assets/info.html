@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body id=info>
+	<div id=info-card>
+		<div class=logo-row>
+			<img src="escudo_de_luz.png" />
+			<img src="LOGO ODONTOLOGIA.png" />
+		</div>
+
+		<h1>Sistema de Evaluaci&oacute;n de Salud Bucal</h1>
+		<p class=version>v2.0.0</p>
+		<p class=description>Sistema para el registro y gesti&oacute;n<br>de encuestas odontol&oacute;gicas.</p>
+
+		<div class=scroll-area>
+			<hr class=divider>
+
+			<div class=credit-group>
+				<p class=credit-label>Desarrollado por</p>
+				<p class=credit-name>Samuel Chourio</p>
+				<p class=credit-name>Luis Dubuc (v1.0)</p>
+			</div>
+
+			<div class=credit-group>
+				<p class=credit-label>Administrador del Departamento de<br>Tecnolog&iacute;a, Informaci&oacute;n y Comunicaci&oacute;n</p>
+				<p class=credit-name>Jos&eacute; Garc&iacute;a</p>
+			</div>
+
+			<div class=credit-group>
+				<p class=credit-label>Colaboradores</p>
+				<p class=credit-name>Jes&uacute;s Lozano</p>
+				<p class=credit-name>C&eacute;sar Moreno</p>
+			</div>
+
+			<div class=credit-group>
+				<p class=credit-label>Solicitado por</p>
+				<p class=credit-name>Dra. Yrma Santana</p>
+				<p class=credit-name>Directora del Instituto de Investigaciones Odontol&oacute;gicas</p>
+			</div>
+
+			<hr class=divider>
+
+			<div class=institution-group>
+				<p class=department>Departamento de Tecnolog&iacute;a,<br>Informaci&oacute;n y Comunicaci&oacute;n</p>
+				<p class=institution>Facultad de Odontolog&iacute;a</p>
+				<p class=institution>Universidad del Zulia</p>
+			</div>
+		</div>
+
+		<a href="welcome.html" class="btn btn-tertiary" id=btn-back>Volver</a>
+
+		<hr class=divider>
+
+		<p class=copyright>&copy; 2026 Departamento de Tecnolog&iacute;a,<br>Informaci&oacute;n y Comunicaci&oacute;n.<br>Todos los derechos reservados.</p>
+	</div>
+	<script>
+		var from = new URLSearchParams(window.location.search).get("from");
+		document.getElementById("btn-back").href =
+			from === "config"  ? "config.html"  :
+			from === "welcome" ? "welcome.html"  :
+			from === "login"   ? "login.html"    :
+			                    "welcome.html";
+	</script>
+</body>
+</html>

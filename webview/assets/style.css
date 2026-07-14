@@ -25,7 +25,6 @@
 	gap: inherit;
 	transition-duration: inherit;
 	transition-property: inherit;
-	flex-wrap: wrap;
 	align-items: inherit;
 	justify-content: inherit;
 	box-sizing: border-box;
@@ -103,6 +102,9 @@ th { font-weight: normal }
 	justify-content: center;
 	background-color: var(--bg2);
 	color: var(--bg);
+	height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden;
 }
 #login > #logo {
 	display: flex;
@@ -159,12 +161,13 @@ th { font-weight: normal }
 	font-size: 1.1rem;
 	padding: var(--pad);
 	border-radius: 5px;
-	width:90%;
+	width:100%;
+	box-sizing: border-box;
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
 }
 #login > form a {
 	text-align: center;
-	width: 85%;
+	width: 100%;
 	padding: var(--smallpad);
 	background-color: #e0e0e0;
 	color: #555;
@@ -254,14 +257,17 @@ th { font-weight: normal }
 	font-size: 1rem;
 	box-sizing: border-box;
 }
-#welcome-card .btn-primary {
+#welcome-card .btn-primary,
+#info-card .btn-primary {
 	background-color: var(--bg2);
 	color: white;
 	font-weight: bold;
 	font-size: 1.1rem;
 	padding: clamp(16px, 2.8vw, 36px) var(--pad);
+	width: 100%;
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
 }
+
 #welcome-card .btn-secondary {
 	border: 2px solid var(--bg2);
 	background-color: white;
@@ -285,17 +291,20 @@ th { font-weight: normal }
 	color: var(--accent);
 	font-weight: 600;
 	font-size: 1rem;
-	padding: var(--pad);
+	padding: var(--smallpad);
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 }
-#welcome-card .btn-tertiary {
+#welcome-card .btn-tertiary,
+#info-card .btn-tertiary {
 	background-color: #e0e0e0;
 	color: #555;
 	font-weight: normal;
 	font-size: 0.95rem;
 	padding: var(--smallpad) var(--pad);
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+	width: 100%;
 }
+
 #welcome-card .record-count {
 	font-size: 0.85rem;
 	color: #999;
@@ -315,6 +324,119 @@ th { font-weight: normal }
 	padding-top: clamp(4px, 0.8vw, 12px);
 	width: 100%;
 }
+
+#info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: var(--bigpad);
+	background-color: var(--bg2);
+	height: 100vh;
+	box-sizing: border-box;
+}
+#info-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--smallpad);
+	padding: var(--bigpad);
+	width: 100%;
+	max-width: var(--card-max);
+	min-height: 0;
+	max-height: calc(100vh - 2 * var(--bigpad));
+	overflow: hidden;
+	background-color: white;
+	color: var(--fg);
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+	text-align: center;
+}
+#info-card .scroll-area {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 100%;
+}
+#info-card .logo-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--smallpad);
+	align-self: flex-start;
+}
+#info-card .logo-row img {
+	height: clamp(30px, 4.5vw, 56px);
+	opacity: 0.9;
+}
+#info-card h1 {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: var(--fg);
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+#info-card .version {
+	font-size: 0.85rem;
+	color: #999;
+	margin: 0;
+}
+#info-card .description {
+	font-size: 0.85rem;
+	color: #777;
+	margin: 0;
+	line-height: 1.4;
+}
+#info-card hr.divider {
+	border: none;
+	border-top: 1px solid #ddd;
+	width: 100%;
+	margin: var(--pad) 0 var(--smallpad) 0;
+}
+#info-card .credit-group {
+	width: 100%;
+}
+#info-card .credit-label {
+	font-size: 0.7rem;
+	color: #aaa;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin: 0 0 2px 0;
+}
+#info-card .credit-name {
+	font-size: 0.9rem;
+	color: #555;
+	margin: 0 0 6px 0;
+}
+#info-card .institution-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+	width: 100%;
+}
+#info-card .institution {
+	font-size: 0.9rem;
+	color: #555;
+	margin: 0;
+}
+#info-card .department {
+	font-size: 0.8rem;
+	color: #777;
+	margin: 0;
+	line-height: 1.5;
+}
+#info-card .copyright {
+	font-size: 0.7rem;
+	color: #999;
+	margin: 0;
+	line-height: 1.5;
+}
+
 @media (min-width: 768px) {
 	#welcome {
 		justify-content: flex-start;
@@ -325,10 +447,6 @@ th { font-weight: normal }
 		padding-top: 6vh;
 	}
 	#config {
-		justify-content: flex-start;
-		padding-top: 8vh;
-	}
-	#info {
 		justify-content: flex-start;
 		padding-top: 8vh;
 	}
@@ -353,12 +471,14 @@ th { font-weight: normal }
 	padding: var(--bigpad);
 	display: flex;
 	flex-wrap: nowrap;
-	gap: var(--pad);
+	gap: var(--bigpad);
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--bg2);
 	color: var(--bg);
+	min-height: 100%;
+	box-sizing: border-box;
 }
 #config > form {
 	display: flex;
@@ -401,14 +521,15 @@ th { font-weight: normal }
 	font-size: 1.1rem;
 	padding: var(--pad);
 	border-radius: 5px;
-	width: 90%;
+	width: 100%;
+	box-sizing: border-box;
 	cursor: pointer;
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
 }
 #config > form a {
 	text-align: center;
 	width: 100%;
-	padding: var(--pad);
+	padding: var(--smallpad);
 	background-color: #e0e0e0;
 	color: #555;
 	border-radius: 5px;
@@ -422,8 +543,7 @@ th { font-weight: normal }
 	font-weight: 600;
 }
 #config footer {
+	font-size: 0.9rem;
 	text-align: center;
-	font-size: 0.8rem;
-	opacity: 0.6;
-	color: var(--bg);
+	opacity: 0.7;
 }
