@@ -28,7 +28,7 @@
 <table>
 	<tbody>
 		<tr>
-			<td cols=2>Sintomas</td>
+			<td cols=2>Síntomas</td>
 			<td cols=2>Signos</td>
 		</tr>
 		<tr>
@@ -72,7 +72,7 @@
 {% macro intraoral_tamaño() %}
 	<option value=0>0 - 0-2mm</option>
 	<option value=1>1 - 3-5mm</option>
-	<option value=2>2 - Mas de 5mm</option>
+	<option value=2>2 - Más de 5mm</option>
 {% endmacro %}
 
 {% macro intraoral_consistencia() %}
@@ -188,7 +188,7 @@
 		<option value=P>P - Preventivo</option>
 		<option value=F>F - Obturación de fisura</option>
 		<option value=1>1 - Obturación de una superficie</option>
-		<option value=2>2 - Obturación de 2 o mas superficies</option>
+		<option value=2>2 - Obturación de 2 o más superficies</option>
 		<option value=3>3 - Corona por cualquier motivo</option>
 		<option value=4>4 - Carilla</option>
 		<option value=5>5 - Cuidado de la pulpa y restauración</option>
@@ -311,9 +311,10 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css"/>
 </head>
-<body>
+<body id=form>
 <form method=POST>
-	<a href="welcome.html">Volver al Menu</a>
+	<a href="welcome.html">Volver al Menú</a>
+	<hr class=divider>
 	<h1>Datos del Paciente</h1>
 	<div class=options>
 		<div>
@@ -344,7 +345,7 @@
 			<select id=etnia name=etnia>
 				<option value="1">1 - Criollo</option>
 				<option value="2">2 - Afrodescendiente</option>
-				<option value="3">3 - Indigena</option>
+				<option value="3">3 - Indígena</option>
 			</select>
 		</div>
 		<div>
@@ -478,7 +479,6 @@
 				<option value="La Victoria">La Victoria</option>
 				<option value="Las Parcelas">Las Parcelas</option>
 				<option value="Libertad">Libertad</option>
-				<option value="Libertad">Libertad</option>
 				<option value="Libertador">Libertador</option>
 				<option value="Los Cortijos">Los Cortijos</option>
 				<option value="Luis De Vicente">Luis De Vicente</option>
@@ -489,7 +489,7 @@
 				<option value="Marcelino Briceño">Marcelino Briceño</option>
 				<option value="Marcial Hernández">Marcial Hernández</option>
 				<option value="Mariano Parra León">Mariano Parra León</option>
-				<option value="Monagas ">Monagas </option>
+				<option value="Monagas">Monagas</option>
 				<option value="Monseñor Arturo Álvarez">Monseñor Arturo Álvarez</option>
 				<option value="Monseñor Marcos Sergio Godoy">Monseñor Marcos Sergio Godoy</option>
 				<option value="Moralito">Moralito</option>
@@ -498,8 +498,7 @@
 				<option value="Potreritos">Potreritos</option>
 				<option value="Pueblo Nuevo">Pueblo Nuevo</option>
 				<option value="Punta Gorda">Punta Gorda</option>
-				<option value="Rafael Maria Baralt">Rafael Maria Baralt</option>
-				<option value="Rafael Urdaneta">Rafael Urdaneta</option>
+				<option value="Rafael María Baralt">Rafael María Baralt</option>
 				<option value="Rafael Urdaneta">Rafael Urdaneta</option>
 				<option value="Raúl Cuenca">Raúl Cuenca</option>
 				<option value="Raúl Leoni">Raúl Leoni</option>
@@ -514,9 +513,8 @@
 				<option value="San Isidro">San Isidro</option>
 				<option value="San José de Perijá">San José de Perijá</option>
 				<option value="San José">San José</option>
-				<option value="San José">San José</option>
 				<option value="San Rafael">San Rafael</option>
-				<option value="San Timoteo San Timoteo ">San Timoteo San Timoteo </option>
+				<option value="San Timoteo">San Timoteo</option>
 				<option value="Santa Bárbara">Santa Bárbara</option>
 				<option value="Santa Cruz del Zulia">Santa Cruz del Zulia</option>
 				<option value="Santa Lucía">Santa Lucía</option>
@@ -532,6 +530,7 @@
 			</select>
 		</div>
 	</div>
+	<hr class=divider>
 	<h1>Evaluación Extraoral</h1>
 {#
 	<div>
@@ -543,7 +542,7 @@
 		<input type=checkbox name=extraoral_no_registrado  required />
 	</div>
 #}
-	<h2>Evaluación de la Articulación Temporomaxilar</h2>
+	<h2>Evaluación de la Articulación Temporomandibular</h2>
 	<span class=note>(A partir de los 12 años de edad)</span>
 	<div id=temporomaxilar class=options>
 		<div>
@@ -560,8 +559,9 @@
 		</div>
 		
 	</div>
+	<hr class=divider>
 	<h1>Evaluación Intraoral</h1>
-	<h2>Lesion</h2>
+	<h2>Lesión</h2>
 	<span class=note>(A partir de los 5 años de edad)</span>
 	<div id=lesion class=options>
 		<script>
@@ -669,8 +669,8 @@
 	</table>
 #}
 	<div class=separator style=background-color:black></div>
-	<h2>Indice de Higiene Bucal Simplificado (IHB-S)</h2>
-	<table id=higiene class=small-select>
+	<h2>Índice de Higiene Bucal Simplificado (IHB-S)</h2>
+	<div class=table-scroll><table id=higiene class=small-select>
 		<thead>
 			<th>Diente</th>
 			{% set higienes = ["16V", "11V", "26V", "36L", "31V", "46L"] %}
@@ -690,21 +690,22 @@
 		{% endfor %}
 		</tbody>
 	</table>
+	</div>
 
 	<div class=separator style=background-color:black></div>
 	<h2>Índice Periodontal de la Comunidad (IPC)</h2>
 	<span class=note>(A partir de los 15 años de edad, aplican opciones 3 y 4)</span>
-	{{ tabla_dientes_3_2("periodontico", periodontico, [54, 56, 57, 59]) }}
+	<div class=table-scroll>{{ tabla_dientes_3_2("periodontico", periodontico, [54, 56, 57, 59]) }}</div>
 	
 	<div class=separator style=background-color:black></div>
 	<h2>Estado de la Dentición y Tratamiento Necesario</h2>
 	<div style=display:flex;gap:0>
-		{{ estado_denticion(1, false) }}
-		{{ estado_denticion(2, true) }}
+		<div class=table-scroll>{{ estado_denticion(1, false) }}</div>
+		<div class=table-scroll>{{ estado_denticion(2, true) }}</div>
 	</div>
 	<div style=display:flex;gap:0>
-		{{ estado_denticion(4, false) }}
-		{{ estado_denticion(3, true) }}
+		<div class=table-scroll>{{ estado_denticion(4, false) }}</div>
+		<div class=table-scroll>{{ estado_denticion(3, true) }}</div>
 	</div>
 
 	
@@ -713,12 +714,12 @@
 	<span class=note>(5 a 18 años)</span>
 	<div id=erupcion>
 		<div style=display:flex;gap:0>
-			{{ erupcion_dentaria(1, false, false) }}
-			{{ erupcion_dentaria(2, true, false) }}
+			<div class=table-scroll>{{ erupcion_dentaria(1, false, false) }}</div>
+			<div class=table-scroll>{{ erupcion_dentaria(2, true, false) }}</div>
 		</div>
 		<div style=display:flex;gap:0>
-			{{ erupcion_dentaria(4, false, true) }}
-			{{ erupcion_dentaria(3, true, true) }}
+			<div class=table-scroll>{{ erupcion_dentaria(4, false, true) }}</div>
+			<div class=table-scroll>{{ erupcion_dentaria(3, true, true) }}</div>
 		</div>
 	</div>
 	<div class=separator style=background-color:black></div>
@@ -873,6 +874,7 @@
 		</div>
 	</div>
 	
+	<hr class=divider>
 	<h1>Necesidad Inmediata de Asistencia y Consulta</h1>
 	<div class=options>
 	{% set necesidades = {"trastorno": "Trastorno que amenaza la vida", "dolor": "Dolor o infección"} %}
@@ -885,7 +887,9 @@
 		</div>
 	{% endfor %}
 	</div>
+	<hr class=divider>
 	<input type=submit value="Guardar" />
+	<p class=copyright>&copy; 2026 Departamento de Tecnolog&iacute;a,<br>Informaci&oacute;n y Comunicaci&oacute;n.<br>Todos los derechos reservados.</p>
 </form>
 <script>
 	age_ranges = [
@@ -955,7 +959,7 @@
 		}
 	})
 
-	// Logica de las Ednias del Zulia
+	// Lógica de las Etnias del Zulia
 	let etnia_zulia = document.getElementById("etnia_zulia")
 	disable(etnia_zulia)
 	for (let id of ["etnia", "estado"]) {

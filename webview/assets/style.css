@@ -7,19 +7,19 @@
 	--bg2: #006699;
 	--accent: #660099;
 	--fg: #003c6b;
-	--card-max: min(90vw, 420px);
+	--card-max: min(95vw, 500px);
 	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
 }
 @media (min-width: 480px) {
-	:root { --card-max: min(85vw, 480px); }
+	:root { --card-max: min(90vw, 560px); }
 }
 @media (min-width: 768px) {
 	:root {
-		--card-max: min(85vw, 640px);
+		--card-max: min(90vw, 820px);
 	}
 }
 @media (min-width: 1024px) {
-	:root { --card-max: min(65vw, 560px); }
+	:root { --card-max: min(80vw, 920px); }
 }
 * {
 	gap: inherit;
@@ -46,14 +46,6 @@ form {
 	padding: var(--bigpad);
 	gap: var(--pad);
 	width: 100%;
-	> div.options {
-		display: flex;
-		width: 100%;
-		> div {
-			display: flex;
-			flex-direction: column;
-		}
-	}
 }
 h1 {
 	font-size: 1.2rem;
@@ -70,8 +62,11 @@ label {
 	display: block;
 }
 .small-select select {
-	width: 2rem;
+	width: 1.5rem;
 	height: 2rem;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
 }
 button, input[type="submit"] { all: unset }
 select, input {
@@ -437,6 +432,151 @@ th { font-weight: normal }
 	line-height: 1.5;
 }
 
+#form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: clamp(40px, 7vw, 80px) var(--bigpad) var(--bigpad) var(--bigpad);
+	background-color: var(--bg2);
+	height: 100vh;
+	box-sizing: border-box;
+}
+#form > form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--pad);
+	padding: var(--bigpad);
+	max-width: var(--card-max);
+	max-height: calc(100vh - 2 * var(--bigpad));
+	min-height: 0;
+	overflow: hidden;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+}
+#form .scroll-area {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 100%;
+}
+#form .scroll-area > div.options {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+#form .scroll-area > div.options > div {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 180px;
+	min-width: 0;
+	gap: var(--smallpad);
+	align-self: flex-end;
+}
+#form .scroll-area > div.options > div > select {
+	margin-top: auto;
+}
+#form .scroll-area > div.options select,
+#form .scroll-area > div.options input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: var(--smallpad);
+	font-size: 1rem;
+}
+#form .scroll-area > select,
+#form .scroll-area > input:not([type="submit"]) {
+	width: 100%;
+	box-sizing: border-box;
+	padding: var(--smallpad);
+	font-size: 1rem;
+}
+#form .scroll-area table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow-x: auto;
+}
+#form .scroll-area .table-scroll {
+	overflow-x: auto;
+	max-width: 100%;
+	-webkit-overflow-scrolling: touch;
+	margin: var(--smallpad) 0;
+}
+#form .scroll-area .separator {
+	margin: var(--smallpad) 0;
+	flex-basis: 2px;
+	background-color: #999;
+	opacity: 0.3;
+}
+#form .scroll-area h1 {
+	font-size: 1.4rem;
+	font-weight: bold;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	color: var(--fg);
+	margin: var(--pad) 0;
+	padding: var(--pad) 0;
+	width: 100%;
+	text-align: center;
+}
+#form .scroll-area h2 {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: var(--fg);
+	margin: 0;
+	width: 100%;
+}
+#form .scroll-area label {
+	font-size: clamp(1rem, 1.5vw, 1.1rem);
+	color: #555;
+	margin-bottom: 4px;
+}
+#form .scroll-area span.note {
+	font-size: 0.9rem;
+	color: #999;
+	width: 100%;
+	text-align: center;
+}
+#form > form a {
+	text-align: center;
+	width: 100%;
+	padding: var(--smallpad);
+	background-color: #e0e0e0;
+	color: #555;
+	border-radius: 5px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+	font-size: 0.9rem;
+}
+#form > form input[type="submit"] {
+	text-align: center;
+	background-color: var(--bg2);
+	color: white;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: var(--pad);
+	border-radius: 5px;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+#form .scroll-area hr.divider {
+	border: none;
+	border-top: 1px solid #ddd;
+	width: 100%;
+	margin: 0;
+}
+#form > form .copyright {
+	font-size: 0.7rem;
+	color: #999;
+	text-align: center;
+	margin: 0;
+	line-height: 1.5;
+	width: 100%;
+}
+
 @media (min-width: 768px) {
 	#welcome {
 		justify-content: flex-start;
@@ -449,6 +589,13 @@ th { font-weight: normal }
 	#config {
 		justify-content: flex-start;
 		padding-top: 8vh;
+	}
+	#form {
+		justify-content: flex-start;
+		padding: var(--pad);
+	}
+	#form > form {
+		padding: var(--pad);
 	}
 }
 

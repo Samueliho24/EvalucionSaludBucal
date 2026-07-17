@@ -47,9 +47,10 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css"/>
 </head>
-<body>
+<body id=form>
 <form method=POST>
 	<a href="welcome.html">Volver al Menu</a>
+	<div class=scroll-area>
 	<h1>Datos del Paciente</h1>
 	<div class=options>
 		<div>
@@ -274,7 +275,7 @@
 	<span class=note>(A partir de los 12 años de edad)</span>
 	<div id=temporomaxilar class=options>
 		<div>
-			<label for="temporomaxilar_sintoma">Sintomas</label>
+			<label for="temporomaxilar_sintoma">Síntomas</label>
 			<select name="temporomaxilar_sintoma" required >
 				
 	<option value=0>0 - Ausencia</option>
@@ -408,7 +409,7 @@
 
 		
 <div>
-	<label for="lesion_morfologia">Morfologia</label>
+	<label for="lesion_morfologia">Morfología</label>
 	<select name="lesion_morfologia" required >
 		
 	<option value=0>0 - Plana</option>
@@ -420,11 +421,11 @@
 </div>
 
 		<div>
-			<label for=lesion_numero>Numero de Lesiones</label>
+			<label for=lesion_numero>Número de Lesiones</label>
 			<select name=lesion_numero required >
-				<option value=0>0 - Unica</option>
-				<option value=1>1 - Multiples lesiones con iguales caracteristicas</option>
-				<option value=2>2 - Multiples lesiones con diferentes caracteristicas</option>
+				<option value=0>0 - Única</option>
+				<option value=1>1 - Múltiples lesiones con iguales características</option>
+				<option value=2>2 - Múltiples lesiones con diferentes características</option>
 			</select>
 		</div>
 		<script>
@@ -690,6 +691,7 @@
 	
 	<div class=separator style=background-color:black></div>
 	<h2>Estado de la Dentición y Tratamiento Necesario</h2>
+	<div class=table-scroll>
 	<div style=display:flex;gap:0>
 		
 	<table class=small-select>
@@ -2198,12 +2200,13 @@
 	</table>
 
 	</div>
+	</div>
 
 	
 	<div class=separator style=background-color:black></div>
 	<h2>Erupción Dentaria</h2>
 	<span class=note>(5 a 18 años)</span>
-	<div id=erupcion>
+	<div id=erupcion class=table-scroll>
 		<div style=display:flex;gap:0>
 			
 	<table class=small-select>
@@ -2651,7 +2654,7 @@
 			</select>
 		</div>
 		<div>
-			<label for=habitos_deglucion_atipica>Deglución Atipica</label>
+			<label for=habitos_deglucion_atipica>Deglución Atípica</label>
 			<select name=habitos_deglucion_atipica  required >
 				
 <option value=0 selected>0 - Ausencia</option>
@@ -2739,8 +2742,8 @@
 			</div>
 		
 			<div>
-				<label for="morida_profunda_anterior">Morida profunda anterior</label>
-				<select name="morida_profunda_anterior" required >
+				<label for="morida_profunda_anterior">Mordida profunda anterior</label>
+				<select name="mordida_profunda_anterior" required >
 					
 <option value=0 selected>0 - Ausencia</option>
 <option value=1>1 - Presencia</option>
@@ -2750,8 +2753,8 @@
 			</div>
 		
 			<div>
-				<label for="morida_tope_a_tope">Morida tope a tope</label>
-				<select name="morida_tope_a_tope" required >
+				<label for="morida_tope_a_tope">Mordida tope a tope</label>
+				<select name="mordida_tope_a_tope" required >
 					
 <option value=0 selected>0 - Ausencia</option>
 <option value=1>1 - Presencia</option>
@@ -2797,6 +2800,7 @@
 			</select>
 		</div>
 	
+	</div>
 	</div>
 	<input type=submit value="Guardar" />
 </form>
