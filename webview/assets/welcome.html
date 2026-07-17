@@ -17,9 +17,18 @@
 		<p class=system-name>Sistema de Evaluaci&oacute;n de Salud Bucal</p>
 
 		<div class=action-group>
-			<a href="form.html" class="btn btn-primary">Formulario</a>
+			<button onclick="document.getElementById('modal-forms').style.display='flex'" class="btn btn-primary">Formulario</button>
 			<button onclick="Android.export()" class="btn btn-secondary">Exportar Datos</button>
 			<p class=record-count>Registros por Exportar: <span content=count></span></p>
+		</div>
+
+		<div id="modal-forms" class="modal-overlay">
+			<div class="modal-card">
+				<h2>Seleccionar Formulario</h2>
+				<a href="form.html" class="btn btn-primary">Salud Bucal</a>
+				<a href="socioeconomico.html" class="btn btn-primary">Socioeconómico</a>
+				<button onclick="document.getElementById('modal-forms').style.display='none'" class="btn btn-tertiary">Cancelar</button>
+			</div>
 		</div>
 
 		<a href="#" class="btn btn-emergency" style="display:none">Extracci&oacute;n Local</a>

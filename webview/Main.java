@@ -59,7 +59,9 @@ class Handler {
 	}
 	public void updateCount() {
 		try {
-			Cursor cursor = db.rawQuery("select count(*) from formularios", new String[] {});
+			Cursor cursor = db.rawQuery(
+				"select (select count(*) from formularios where exportado = 0) + " +
+				"(select count(*) from socioeconomico where exportado = 0)", new String[] {});
 			cursor.moveToNext();
 			variables.put("count", cursor.getString(0));
 		} catch(Exception e) {
@@ -85,6 +87,16 @@ class Handler {
 				}
 				list.put(object);
 			}
+			Cursor c2 = db.rawQuery("select * from socioeconomico where exportado = 0", new String[] {});
+			while((row = cursorMap(c2)) != null) {
+				JSONObject object = new JSONObject();
+				for (Map.Entry<String, String> entry : row.entrySet()) {
+					object.put(entry.getKey(), entry.getValue());
+					object.put("password", getvar("password"));
+				}
+				object.put("_table", "socioeconomico");
+				list.put(object);
+			}
 			byte[] bytes = list.toString().getBytes("utf-8");
 			http.setRequestProperty("Content-Length", String.valueOf(bytes.length));
 			
@@ -105,6 +117,7 @@ class Handler {
 		}
 		activity.runOnUiThread(() -> Toast.makeText(activity, "Los datos fueron exportados exitosamente", Toast.LENGTH_LONG).show());
 		db.execSQL("delete from formularios");
+		db.execSQL("delete from socioeconomico");
 		setvar("count", "0");
 		activity.runOnUiThread(() -> web.loadUrl("file:///android_asset/welcome.html"));
 	}
@@ -181,6 +194,15 @@ class Handler {
 				form.put("examinador", variables.get("name"));
 				form.put("examinador_cedula", variables.get("cedula"));
 				if(mutate("formularios", form, "insert")) {
+					updateCount();
+					activity.runOnUiThread(() -> Toast.makeText(activity, "El formulario fue guardado exitosamente", Toast.LENGTH_LONG).show());
+					activity.runOnUiThread(() -> web.loadUrl("file:///android_asset/welcome.html"));
+				}
+			}
+			else if(method.equals("socioeconomico")) {
+				form.put("examinador", variables.get("name"));
+				form.put("examinador_cedula", variables.get("cedula"));
+				if(mutate("socioeconomico", form, "insert")) {
 					updateCount();
 					activity.runOnUiThread(() -> Toast.makeText(activity, "El formulario fue guardado exitosamente", Toast.LENGTH_LONG).show());
 					activity.runOnUiThread(() -> web.loadUrl("file:///android_asset/welcome.html"));

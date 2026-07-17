@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body id=form>
+<form method=POST>
+	<a href="welcome.html">Volver al Menú</a>
+	<div class=scroll-area>
+	<h1>Datos del Paciente</h1>
+	<div class=options>
+		<div>
+			<label for=cedula>Cédula</label>
+			<input name=cedula type=number pattern="[1-9][0-9]+" required />
+		</div>
+		<div>
+			<label for=nombre>Nombre</label>
+			<input name=nombre required />
+		</div>
+		<div>
+			<label for=apellido>Apellido</label>
+			<input name=apellido required />
+		</div>
+		<div>
+			<label for=genero>Sexo</label>
+			<select name=genero required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Masculino</option>
+				<option value="2">2 - Femenino</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>1. Información General</h1>
+	<div class=options>
+		<div>
+			<label for=edad>Edad</label>
+			<input name=edad type=number pattern="[1-9][0-9]*" required />
+		</div>
+		<div>
+			<label for=autoidentificacion_etnica>Autoidentificación Étnica</label>
+			<select id=autoidentificacion_etnica name=autoidentificacion_etnica required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Indígena</option>
+				<option value="2">2 - Mestizo</option>
+				<option value="3">3 - Blanco</option>
+				<option value="4">4 - Afrovenezolano</option>
+				<option value="5">5 - Otro</option>
+			</select>
+		</div>
+		<div id=div_etnia_indigena style="display:none">
+			<label for=etnia_indigena>Etnia o Pueblo Indígena</label>
+			<select id=etnia_indigena name=etnia_indigena disabled>
+				<option value="0">0 - No aplica</option>
+				<option value="1">1 - Wayuu</option>
+				<option value="2">2 - Añu</option>
+				<option value="3">3 - Barí</option>
+				<option value="4">4 - Yukpa</option>
+				<option value="5">5 - Japreria</option>
+				<option value="6">6 - Otro pueblo</option>
+			</select>
+		</div>
+		<div id=div_etnia_otro style="display:none">
+			<label for=etnia_otro>Especifique cuál</label>
+			<input id=etnia_otro name=etnia_otro type=text disabled />
+		</div>
+	</div>
+
+	<h1>2. Condición de Salud General</h1>
+	<div class=options>
+		<div>
+			<label>¿Presenta alguna discapacidad funcional?</label>
+			<select name=discapacidad_funcional required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+				<option value="0">0 - No sabe</option>
+			</select>
+		</div>
+		<div>
+			<label>Nivel de Independencia para el Cuidado Personal</label>
+			<select name=nivel_independencia required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Totalmente dependiente</option>
+				<option value="2">2 - Medianamente dependiente</option>
+				<option value="3">3 - Totalmente independiente</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>3. Condición Socioeconómica y Familiar</h1>
+	<h2>3.1 Situación Familiar</h2>
+	<div class=options>
+		<div>
+			<label>¿Tiene familiares directos (hijos, hermanos, sobrinos u otros)?</label>
+			<select name=tiene_familiares required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+				<option value="0">0 - No sabe / No recuerda</option>
+			</select>
+		</div>
+		<div>
+			<label>¿Con qué frecuencia recibe visitas de familiares o personas cercanas?</label>
+			<select name=frecuencia_visitas required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Semanal</option>
+				<option value="2">2 - Quincenal</option>
+				<option value="3">3 - Mensual</option>
+				<option value="4">4 - Ocasional</option>
+				<option value="5">5 - Nunca</option>
+			</select>
+		</div>
+	</div>
+
+	<div class=separator style=background-color:black></div>
+	<h2>3.2 Situación Socioeconómica</h2>
+	<span class=note>¿Actualmente tiene ingresos por alguna de estas vías?</span>
+	<div class=options id=ingresos>
+		<div>
+			<label>Pensión</label>
+			<select name=ingresos_pension required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Jubilación</label>
+			<select name=ingresos_jubilacion required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Ayuda de familiares</label>
+			<select name=ingresos_familiares required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Bonos del Estado</label>
+			<select name=ingresos_bonos required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Ninguno</label>
+			<select name=ingresos_ninguno required>
+				<option value="1">1 - Sí</option>
+				<option value="2" selected>2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Otro</label>
+			<select name=ingresos_otro required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div id=div_ingresos_otro style="display:none">
+			<label for=ingresos_otro_text>Especifique cuál</label>
+			<input id=ingresos_otro_text name=ingresos_otro_text type=text disabled />
+		</div>
+	</div>
+
+	<div class=options>
+		<div>
+			<label>¿Siente que tiene cubiertas sus necesidades básicas en esta institución (alimentación, higiene, salud, recreación)?</label>
+			<select name=necesidades_cubiertas required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí, todas</option>
+				<option value="2">2 - Parcialmente</option>
+				<option value="3">3 - No</option>
+				<option value="0">0 - No sabe / No responde</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>4. Hábitos de Higiene Bucal</h1>
+	<div class=options>
+		<div>
+			<label>¿Con qué frecuencia se cepilla los dientes?</label>
+			<select name=frecuencia_cepillado required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Después de cada comida</option>
+				<option value="2">2 - Dos veces al día</option>
+				<option value="3">3 - Una vez al día</option>
+				<option value="4">4 - Ocasionalmente</option>
+				<option value="5">5 - No realiza limpieza</option>
+			</select>
+		</div>
+		<div>
+			<label>¿Quién le realiza o ayuda con su higiene bucal?</label>
+			<select name=quien_higiene required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Lo hace solo(a)</option>
+				<option value="2">2 - Con ayuda de un cuidador o personal de la institución</option>
+				<option value="3">3 - Lo hace solo el cuidador</option>
+			</select>
+		</div>
+	</div>
+
+	<div class=separator style=background-color:black></div>
+	<span class=note>¿Utiliza alguno de los siguientes productos para su higiene bucal?</span>
+	<div class=options id=productos>
+		<div>
+			<label>Cepillo dental</label>
+			<select name=producto_cepillo required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Crema dental</label>
+			<select name=producto_crema required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Enjuague bucal</label>
+			<select name=producto_enjuague required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Hilo dental</label>
+			<select name=producto_hilo required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Productos para limpiar las prótesis</label>
+			<select name=producto_protesis required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>Ninguno</label>
+			<select name=producto_ninguno required>
+				<option value="1">1 - Sí</option>
+				<option value="2" selected>2 - No</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>5. Uso y Estado de Prótesis Dental</h1>
+	<div class=options>
+		<div>
+			<label>¿Usa prótesis dental?</label>
+			<select id=usa_protesis name=usa_protesis required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>Desde cuándo usa prótesis dental</label>
+			<select name=desde_cuando_protesis required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Desde hace menos de un mes</option>
+				<option value="2">2 - Desde hace 6 meses</option>
+				<option value="3">3 - Desde hace más de un año</option>
+				<option value="4">4 - Desde hace 2 o 3 años</option>
+				<option value="5">5 - Hace más de 5 años</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>¿Cómo la adquirió?</label>
+			<select name=como_adquirio_protesis required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - De forma particular, pagándola</option>
+				<option value="2">2 - Por la Misión Sonrisa</option>
+				<option value="3">3 - Otra forma</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>¿Limpia o le limpian su boca después de quitarse la prótesis?</label>
+			<select name=limpia_boca_protesis required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Sí, siempre</option>
+				<option value="2">2 - A veces</option>
+				<option value="3">3 - Nunca</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>¿Qué usa para limpiar su dentadura o prótesis?</label>
+			<select name=limpia_dentadura_protesis required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Cepillo y pasta de dientes normal</option>
+				<option value="2">2 - Cepillo y jabón suave</option>
+				<option value="3">3 - Productos especiales para limpiar prótesis dental</option>
+				<option value="4">4 - Solo agua</option>
+				<option value="5">5 - No las limpia</option>
+			</select>
+		</div>
+	</div>
+
+	<div class=separator style=background-color:black></div>
+	<h2>Problemas con la Prótesis Dental</h2>
+	<div class=options>
+		<div class=protesis-field>
+			<label>Dolor</label>
+			<select name=protesis_dolor required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Sí, seguido</option>
+				<option value="2">2 - Sí, a veces</option>
+				<option value="3">3 - No</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>Se le mueven</label>
+			<select name=protesis_mueven required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Sí, seguido</option>
+				<option value="2">2 - Sí, a veces</option>
+				<option value="3">3 - No</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>Se le ha roto</label>
+			<select name=protesis_rota required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Sí, seguido</option>
+				<option value="2">2 - Sí, a veces</option>
+				<option value="3">3 - No</option>
+			</select>
+		</div>
+		<div class=protesis-field>
+			<label>¿Siente alguna otra molestia?</label>
+			<select name=protesis_otra_molestia required disabled>
+				<option value="0" selected>0 - No aplica</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div class=protesis-field id=div_protesis_otra_molestia style="display:none">
+			<label for=protesis_otra_molestia_text>Especifique cuál</label>
+			<input id=protesis_otra_molestia_text name=protesis_otra_molestia_text type=text disabled />
+		</div>
+	</div>
+
+	<h1>6. Malestar Bucal</h1>
+	<div class=options>
+		<div>
+			<label>¿Siente dolor o molestias en sus dientes o encías?</label>
+			<select name=dolor_bucal required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí, seguido</option>
+				<option value="2">2 - Sí, a veces</option>
+				<option value="3">3 - No</option>
+			</select>
+		</div>
+		<div>
+			<label>¿Ha notado si sus encías sangran o están hinchadas?</label>
+			<select name=encias_sangran required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+				<option value="0">0 - No sabe</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>7. Atención Dental</h1>
+	<div class=options>
+		<div>
+			<label>¿Cuándo fue la última vez que lo examinó un odontólogo?</label>
+			<select name=ultima_vez_odontologo required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Hace menos de 6 meses</option>
+				<option value="2">2 - Hace de 6 meses a 1 año</option>
+				<option value="3">3 - Hace más de 1 año</option>
+				<option value="4">4 - Nunca lo ha examinado</option>
+			</select>
+		</div>
+	</div>
+
+	<h1>8. Hábitos Perjudiciales</h1>
+	<div class=options>
+		<div>
+			<label>¿Es o fue usted fumador?</label>
+			<select id=es_fumador name=es_fumador required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div id=div_cantidad_cigarrillos style="display:none">
+			<label>Cantidad de cigarrillos al día</label>
+			<input name=cantidad_cigarrillos type=number min=0 disabled />
+		</div>
+		<div>
+			<label>¿Consumió usted alcohol?</label>
+			<select id=consumo_alcohol name=consumo_alcohol required>
+				<option value="" disabled selected>Seleccione...</option>
+				<option value="1">1 - Sí</option>
+				<option value="2">2 - No</option>
+			</select>
+		</div>
+		<div id=div_frecuencia_alcohol style="display:none">
+			<label>Frecuencia del consumo de bebidas alcohólicas</label>
+			<select name=frecuencia_alcohol required>
+				<option value="0">0 - No aplica</option>
+				<option value="1">1 - Diaria</option>
+				<option value="2">2 - 3 veces a la semana</option>
+				<option value="3">3 - Semanal</option>
+				<option value="4">4 - Ocasional</option>
+				<option value="5">5 - Nunca</option>
+			</select>
+		</div>
+	</div>
+
+	</div>
+	<input type=submit value="Guardar" />
+	<p class=copyright>&copy; 2026 Departamento de Tecnolog&iacute;a,<br>Informaci&oacute;n y Comunicaci&oacute;n.<br>Todos los derechos reservados.</p>
+</form>
+
+<script>
+(function() {
+	// === Lógica étnica indígena ===
+	let etnia_select = document.getElementById("autoidentificacion_etnica");
+	let div_indigena = document.getElementById("div_etnia_indigena");
+	let etnia_indigena = document.getElementById("etnia_indigena");
+	let div_etnia_otro = document.getElementById("div_etnia_otro");
+	let input_etnia_otro = document.getElementById("etnia_otro");
+
+	function toggleEtnia() {
+		if (etnia_select.value === "1") {
+			div_indigena.style.display = "";
+			etnia_indigena.removeAttribute("disabled");
+		} else {
+			div_indigena.style.display = "none";
+			etnia_indigena.setAttribute("disabled", "true");
+			etnia_indigena.value = "0";
+		}
+		if (etnia_select.value === "5") {
+			div_etnia_otro.style.display = "";
+			input_etnia_otro.removeAttribute("disabled");
+		} else {
+			div_etnia_otro.style.display = "none";
+			input_etnia_otro.setAttribute("disabled", "true");
+			input_etnia_otro.value = "";
+		}
+	}
+	etnia_select.addEventListener("change", toggleEtnia);
+	toggleEtnia();
+
+	// === Lógica prótesis ===
+	let usa_protesis = document.getElementById("usa_protesis");
+	let protesis_fields = document.querySelectorAll(".protesis-field select");
+	let molestia_select = document.querySelector('[name="protesis_otra_molestia"]');
+	let div_protesis_otra_molestia = document.getElementById("div_protesis_otra_molestia");
+	let input_protesis_otra = document.getElementById("protesis_otra_molestia_text");
+
+	function toggleProtesis() {
+		let usa = (usa_protesis.value === "1");
+		for (let f of protesis_fields) {
+			if (usa) {
+				f.removeAttribute("disabled");
+			} else {
+				f.setAttribute("disabled", "true");
+				f.value = "0";
+			}
+		}
+		if (!usa) {
+			div_protesis_otra_molestia.style.display = "none";
+			input_protesis_otra.setAttribute("disabled", "true");
+			input_protesis_otra.value = "";
+		}
+	}
+	usa_protesis.addEventListener("change", toggleProtesis);
+	toggleProtesis();
+
+	// === Lógica fumador ===
+	let es_fumador = document.getElementById("es_fumador");
+	let div_cantidad = document.getElementById("div_cantidad_cigarrillos");
+	let input_cantidad = div_cantidad.querySelector("input");
+
+	function toggleFumador() {
+		if (es_fumador.value === "1") {
+			div_cantidad.style.display = "";
+			input_cantidad.removeAttribute("disabled");
+		} else {
+			div_cantidad.style.display = "none";
+			input_cantidad.setAttribute("disabled", "true");
+			input_cantidad.value = "";
+		}
+	}
+	es_fumador.addEventListener("change", toggleFumador);
+	toggleFumador();
+
+	// === Lógica alcohol ===
+	let consumo_alcohol = document.getElementById("consumo_alcohol");
+	let div_freq = document.getElementById("div_frecuencia_alcohol");
+	let sel_freq = div_freq.querySelector("select");
+
+	function toggleAlcohol() {
+		if (consumo_alcohol.value === "1") {
+			div_freq.style.display = "";
+			sel_freq.removeAttribute("disabled");
+		} else {
+			div_freq.style.display = "none";
+			sel_freq.setAttribute("disabled", "true");
+			sel_freq.value = "0";
+		}
+	}
+	consumo_alcohol.addEventListener("change", toggleAlcohol);
+	toggleAlcohol();
+
+	// === Lógica prótesis otra molestia ===
+	molestia_select.addEventListener("change", function() {
+		if (molestia_select.value === "1") {
+			div_protesis_otra_molestia.style.display = "";
+			input_protesis_otra.removeAttribute("disabled");
+		} else {
+			div_protesis_otra_molestia.style.display = "none";
+			input_protesis_otra.setAttribute("disabled", "true");
+			input_protesis_otra.value = "";
+		}
+	});
+
+	// === Lógica ingresos otro ===
+	let select_ingresos_otro = document.querySelector('[name="ingresos_otro"]');
+	let div_ingresos_otro = document.getElementById("div_ingresos_otro");
+	let input_ingresos_otro = document.getElementById("ingresos_otro_text");
+
+	select_ingresos_otro.addEventListener("change", function() {
+		if (select_ingresos_otro.value === "1") {
+			div_ingresos_otro.style.display = "";
+			input_ingresos_otro.removeAttribute("disabled");
+		} else {
+			div_ingresos_otro.style.display = "none";
+			input_ingresos_otro.setAttribute("disabled", "true");
+			input_ingresos_otro.value = "";
+		}
+	});
+
+	// === Lógica multirespuesta INGRESOS: Ninguno deshabilita los demás ===
+	let ninguno_ingresos = document.querySelector('[name="ingresos_ninguno"]');
+	let otros_ingresos = [
+		document.querySelector('[name="ingresos_pension"]'),
+		document.querySelector('[name="ingresos_jubilacion"]'),
+		document.querySelector('[name="ingresos_familiares"]'),
+		document.querySelector('[name="ingresos_bonos"]'),
+		document.querySelector('[name="ingresos_otro"]')
+	];
+
+	ninguno_ingresos.addEventListener("change", function() {
+		for (let s of otros_ingresos) {
+			if (ninguno_ingresos.value === "1") {
+				s.setAttribute("disabled", "true");
+				s.value = "2";
+			} else {
+				s.removeAttribute("disabled");
+			}
+		}
+	});
+
+	// === Lógica multirespuesta PRODUCTOS: Ninguno deshabilita los demás ===
+	let ninguno_productos = document.querySelector('[name="producto_ninguno"]');
+	let otros_productos = [
+		document.querySelector('[name="producto_cepillo"]'),
+		document.querySelector('[name="producto_crema"]'),
+		document.querySelector('[name="producto_enjuague"]'),
+		document.querySelector('[name="producto_hilo"]'),
+		document.querySelector('[name="producto_protesis"]')
+	];
+
+	ninguno_productos.addEventListener("change", function() {
+		for (let s of otros_productos) {
+			if (ninguno_productos.value === "1") {
+				s.setAttribute("disabled", "true");
+				s.value = "2";
+			} else {
+				s.removeAttribute("disabled");
+			}
+		}
+	});
+})();
+</script>
+<script type="text/javascript" src="post.js"></script>
+</body>
+</html>
